@@ -2,7 +2,7 @@
 FROM node:14.17.1
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /recipeapi
 
 
 # Install app dependencies
@@ -17,5 +17,6 @@ RUN npm install
 # Bundle app source
 COPY . .
 
+ENV PORT=8080
 EXPOSE 8080
 CMD [ "node", "index.js" ]
