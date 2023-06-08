@@ -40,14 +40,16 @@ router.get("/:id", async(req,res)=>{
 })
 
 //Find recipe with ingredient as a search query
-router.post("/searchRecipeByIngredient", async (req, res) => {
-  const { ingredient } = req.body;
-
+router.get("/search/:ingredient", async (req, res) => {
+  
   try {
-    const recipes = await Recipes.find({
-      ingredient: { $regex: ingredient, $options: "i" },
-    });
-
+    let recipes = await Recipes.find(
+      {
+        "$or":[
+          {ingredients:{$regex:req.params.ingredient}}
+        ]
+      }
+    )
     res.status(200).json(recipes);
   } catch (error) {
     res.status(500).json({ message: "Something went wrong", error });

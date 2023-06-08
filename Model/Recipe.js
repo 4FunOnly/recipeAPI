@@ -2,7 +2,22 @@ const mongoose = require("mongoose");
 
 const recipeSchema = new mongoose.Schema(
   {
-    recipeTitle: {
+    menu: {
+      type: String,
+      required: true,
+      unique: false,
+    },
+    cooking_time: {
+      type: String,
+      required: true,
+      unique: false,
+    },
+    kcal: {
+      type: Number,
+      required: true,
+      unique: false,
+    },
+    category: {
       type: String,
       required: true,
       unique: false,
@@ -12,17 +27,17 @@ const recipeSchema = new mongoose.Schema(
       required: true,
       unique: false,
     },
-    howToMake: {
+    recipe: {
       type: String,
       required: true,
       unique: false,
     },
-    ratings : [
-      {
-        type : mongoose.Schema.Types.ObjectId,
-        ref : "Rating"
-      },
-    ],
+    // ratings : [
+    //   {
+    //     type : mongoose.Schema.Types.ObjectId,
+    //     ref : "Rating"
+    //   },
+    // ],
   },
   { timestamps: true }
 );
