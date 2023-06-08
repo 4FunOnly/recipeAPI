@@ -16,7 +16,7 @@ RUN npm install
 
 # Bundle app source
 COPY . .
-COPY .env .env
+COPY .env .
 
 ENV PORT=8080
 EXPOSE 8080
